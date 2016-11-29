@@ -2,8 +2,8 @@
 > 微信小程序 - 电影推荐
 
 ### 说明
-> - 使用豆瓣电影api https://developers.douban.com/wiki/?title=movie_v2，在后台需要配置域名：https://api.douban.com/
-> - 网络请求使用fetch请求
+> - 使用豆瓣电影api(https://developers.douban.com/wiki/?title=movie_v2) ，在后台需要配置域名：https://api.douban.com/
+> - 网络请求使用fetch请求，没有使用官方的```wx.request```api
 > - 编写了电影列表组件和消息通知，封装了网络请求
 
 ### 界面截图
