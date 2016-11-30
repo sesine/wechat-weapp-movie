@@ -2,7 +2,7 @@
     <block wx:if="{{showLoading}}">
         <view class="loading">玩命加载中…</view>
     </block>
-    <block wx:else>
+    <block wx:elif="{{showContent}}">
         <!-- pd: person detail -->
         <view class="pd-hd">
             <view class="pd-hd-bg" style="background-image: url({{personDetail.avatars.medium}})"></view>
@@ -27,5 +27,6 @@
             </view>
         </view>
     </block>
-
 </view>
+<import src="../../component/message/message.wxml"/>
+<template is="message" data="{{message: message}}"/>

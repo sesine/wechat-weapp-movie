@@ -11,6 +11,7 @@ Page({
 		windowHeight: 0
 	},
 	onLoad: function() {
+		console.log('load')
 		var that = this
 		douban.fetchFilms.call(that, url, config.city, that.data.start, config.count)
 	},

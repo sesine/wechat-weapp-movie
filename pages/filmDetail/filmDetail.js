@@ -4,11 +4,15 @@ var searchByTagUrl = 'https://api.douban.com/v2/movie/search?tag='
 Page({
     data: {
         filmDetail: {},
-        showLoading: true
+        showLoading: true,
+		showContent: false
     },
     onLoad: function(options) {
         var that = this
         var id = options.id
+		that.setData({
+			id: options.id
+		})
 		douban.fetchFilmDetail.call(that, url, id)
     },
 	viewPersonDetail: function(e) {
@@ -23,5 +27,11 @@ Page({
 		wx.navigateTo({
 			url: '../searchResult/searchResult?url=' + encodeURIComponent(searchByTagUrl) + '&keyword=' + keyword
 		})
+	},
+	onPullDownRefresh: function() {
+		var data = {
+			id: this.data.id
+		}
+		this.onLoad(data)
 	}
 })

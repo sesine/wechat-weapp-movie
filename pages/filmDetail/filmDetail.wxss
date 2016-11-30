@@ -1,4 +1,5 @@
 @import "../../comm/style/animation.wxss";
+@import "../../component/message/message.wxss";
 .fd-hd {
     position: relative;
     width: 100%;
@@ -13,7 +14,9 @@
     content: '';
     display: block;
     position: absolute;
-    z-index: 1;
+    left: 0;
+    top: 0;
+    z-index: -1;
     width: 100%;
     height: 600rpx;
     background-color: rgba(0, 0, 0, .6);
@@ -21,7 +24,9 @@
 
 .fd-hd-bg {
     position: absolute;
-    z-index: 0;
+    z-index: -2;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 600rpx;
     background-size: cover;
@@ -30,7 +35,7 @@
 }
 
 .fd-cover {
-    z-index: 2;
+    z-index: 9999;
     width: 300rpx;
     height: 420rpx;
     margin-top: 80rpx;

@@ -2,7 +2,7 @@
     <block wx:if="{{showLoading}}">
         <view class="loading">玩命加载中…</view>
     </block>
-    <block wx:else>
+    <block wx:elif="{{showContent}}">
     <!-- fd: film detail -->
         <view class="fd-hd">
             <view class="fd-hd-bg" style="background-image: url({{filmDetail.images.large}})"></view>
@@ -10,8 +10,7 @@
             <view class="fd-intro">
                 <view class="fd-title">{{filmDetail.title}}</view>
                 <view class="fd-intro-txt">导演：{{filmDetail.directors[0].name}}</view>
-                <view class="fd-intro-txt">
-                    演员：
+                <view class="fd-intro-txt">演员：
                     <block wx:for="{{filmDetail.casts}}" wx:for-item="filmDetailCastItem" wx:for-index="filmDetailCastIndex" wx:key="filmDetailCastItem">
                         {{filmDetailCastItem.name}}
                         <block wx:if="{{filmDetailCastIndex !== filmDetail.casts.length - 1}}">/</block>
@@ -27,6 +26,7 @@
                 </view>
                 <view class="fd-intro-txt">上映年份：{{filmDetail.year}}年</view>
             </view>
+            
         </view>
         <view class="fd-data">
             <view class="fd-data-item">
@@ -69,3 +69,5 @@
         </view>
     </block> 
 </view>
+<import src="../../component/message/message.wxml"/>
+<template is="message" data="{{message: message}}"/>

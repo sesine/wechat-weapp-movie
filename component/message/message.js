@@ -1,5 +1,6 @@
 module.exports = {
     show: function(cfg) {
+        console.log('bbbbbb')
         var that = this
         that.setData({
             message: {

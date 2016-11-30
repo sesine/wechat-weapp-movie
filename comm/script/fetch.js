@@ -1,79 +1,155 @@
 var config = require('./config.js')
+var message = require('../../component/message/message')
 module.exports = {
     fetchFilms: function(url, city, start, count, cb) {
-    var that = this
+      var that = this
       if (that.data.hasMore) {
-        fetch(url + '?city=' + config.city + '&start=' + start + '&count=' + count).then(function(response){
-          response.json().then(function(data){
-            if(data.subjects.length === 0){
+        wx.request({
+          url: url,
+          data: {
+            city: config.city,
+            start: start,
+            count: count
+          },
+          method: 'GET', 
+          header: {
+            "Content-Type": "application/json,application/json"
+          },
+          success: function(res){
+            if(res.data.subjects.length === 0){
               that.setData({
                 hasMore: false,
               })
             }else{
               that.setData({
-                films: that.data.films.concat(data.subjects),
-                start: that.data.start + data.subjects.length,
+                films: that.data.films.concat(res.data.subjects),
+                start: that.data.start + res.data.subjects.length,
                 showLoading: false
               })
             }
+            wx.stopPullDownRefresh()
             typeof cb == 'function' && cb(res.data)
-          })
+          },
+          fail: function() {
+            that.setData({
+                showLoading: false
+            })
+            message.show.call(that,{
+              content: '网络开小差了',
+              icon: 'warning',
+              duration: 3000
+            })
+          }
         })
       }
     },
     fetchFilmDetail: function(url, id, cb) {
       var that = this;
-      fetch(url + id).then(function(response){
-        response.json().then(function(data){
+      wx.request({
+        url: url + id,
+        method: 'GET',
+        header: {
+          "Content-Type": "application/json,application/json"
+        },
+        success: function(res){
           that.setData({
+            filmDetail: res.data,
             showLoading: false,
-            filmDetail: data
+            showContent: true
           })
           wx.setNavigationBarTitle({
-              title: data.title
+              title: res.data.title
           })
-          typeof cb == 'function' && cb(data)
-        })
+          wx.stopPullDownRefresh()
+          typeof cb == 'function' && cb(res.data)
+        },
+        fail: function() {
+          that.setData({
+              showLoading: false
+          })
+          message.show.call(that,{
+            content: '网络开小差了',
+            icon: 'warning',
+            duration: 3000
+          })
+        }
       })
     },
     fetchPersonDetail: function(url, id, cb) {
       var that = this;
-      fetch(url + id).then(function(response){
-        response.json().then(function(data){
+      wx.request({
+        url: url + id,
+        method: 'GET', 
+        header: {
+          "Content-Type": "application/json,application/json"
+        },
+        success: function(res){
           that.setData({
+            personDetail: res.data,
             showLoading: false,
-            personDetail: data
+            showContent: true
           })
           wx.setNavigationBarTitle({
-              title: data.name
+              title: res.data.name
           })
-          typeof cb == 'function' && cb(data)
-        })
+          wx.stopPullDownRefresh()
+          typeof cb == 'function' && cb(res.data)
+        },
+        fail: function() {
+          that.setData({
+              showLoading: false
+          })
+          message.show.call(that,{
+            content: '网络开小差了',
+            icon: 'warning',
+            duration: 3000
+          })
+        }
       })
     },
     search: function(url, keyword, start, count, cb){
       var that = this
       var url = decodeURIComponent(url)
       if (that.data.hasMore) {
-        fetch(url + keyword + '&start=' + start + '&count=' + count).then(function(response){
-          response.json().then(function(data){
-            if(data.subjects.length === 0){
+        wx.request({
+          url: url + keyword,
+          data: {
+            start: start,
+            count: count
+          },
+          method: 'GET',
+          header: {
+            "Content-Type": "application/json,application/json"
+          },
+          success: function(res){
+            if(res.data.subjects.length === 0){
               that.setData({
                 hasMore: false,
                 showLoading: false
               })
             }else{
               that.setData({
-                films: that.data.films.concat(data.subjects),
-                start: that.data.start + data.subjects.length,
+                films: that.data.films.concat(res.data.subjects),
+                start: that.data.start + res.data.subjects.length,
                 showLoading: false
               })
               wx.setNavigationBarTitle({
                   title: keyword
               })
             }
+            wx.stopPullDownRefresh()
             typeof cb == 'function' && cb(res.data)
-          })
+          },
+          fail: function() {
+            that.setData({
+                showLoading: false
+            })
+            message.show.call(that,{
+              content: '网络开小差了',
+              icon: 'warning',
+              duration: 3000
+            })
+          }
         })
       }
     }

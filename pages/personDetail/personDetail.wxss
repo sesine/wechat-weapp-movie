@@ -1,3 +1,4 @@
+@import "../../component/message/message.wxss";
 .pd-hd {
     position: relative;
     width: 100%;

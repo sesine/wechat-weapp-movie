@@ -3,11 +3,15 @@ var url = 'https://api.douban.com/v2/movie/celebrity/'
 Page({
     data: {
         personDetail: {},
-        showLoading: true
+        showLoading: true,
+		showContent: false
     },
     onLoad: function(options) {
         var that = this
         var id = options.id
+        that.setData({
+            id: options.id
+        })
 		douban.fetchPersonDetail.call(that, url, id)
     },
 	viewFilmDetail: function(e) {
@@ -15,5 +19,11 @@ Page({
 		wx.redirectTo({
 		  url: '../filmDetail/filmDetail?id=' + data.id
 		})
+	},
+	onPullDownRefresh: function() {
+		var data = {
+			id: this.data.id
+		}
+		this.onLoad(data)
 	}
 })
