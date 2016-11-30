@@ -1,5 +1,14 @@
 # wechat-weapp-movie
+
 > 微信小程序 - 电影推荐
+
+### 更新日志
+
+> 2016-11-30 更新内容：
+> - 1.将网络请求从fetch改为官方的wx.request
+> - 2.添加网络请求失败的提示
+> - 3.将wxss中引入的网络图片路径改为base64的方式
+> - 4.现已支持手机预览 : )
 
 ### 说明
 > - 使用豆瓣电影api(https://developers.douban.com/wiki/?title=movie_v2) ，在后台需要配置域名：https://api.douban.com/
