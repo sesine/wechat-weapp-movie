@@ -1,0 +1,4 @@
+<map longitude="{{longitude}}" latitude="{{latitude}}" class="location-map"></map>
+<view class="location-address">您的当前位置在：{{formatted_address}}</view>
+<view class="location-coord">gps坐标：经度({{latitude}}),纬度纬度({{longitude}})</view>
+<button class="location-refresh" type="primary" loading="{{loading}}" bindtap="refreshLocation">重新定位</button>

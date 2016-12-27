@@ -2,11 +2,11 @@
 .film {
     box-sizing: border-box;
     width: 750rpx;
-    padding: 10rpx;
+    padding: 10rpx 15rpx;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     box-shadow: 0 0 40rpx #f4f4f4 inset;
 }
 
@@ -28,7 +28,6 @@
 
 .film-cover {
     position: relative;
-    border-radius: 10rpx;
     overflow: hidden;
 }
 

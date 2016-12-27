@@ -1,8 +1,8 @@
 <view class="search-hd">
     <view class="search-area">
         <form bindsubmit="search">
-            <view class="search-type" bindtap="changeSearchType">{{searchType == 0 ? '默认' : '类型'}}</view>
-            <input class="search-txt" name="keyword" placeholder="{{searchType == 0 ? '请输入电影标题、演员或导演' : '请输入影片类型，如：爱情、喜剧'}}"/>
+            <view class="search-type" bindtap="changeSearchType">{{searchType == 'keyword' ? '默认' : '类型'}}</view>
+            <input class="search-txt" name="keyword" placeholder="{{searchType == 'keyword' ? '请输入电影标题、演员或导演' : '请输入影片类型，如：爱情、喜剧'}}"/>
             <button class="search-btn" formType="submit">搜索</button>
         </form>
     </view>

@@ -1,0 +1,65 @@
+<import src="../../component/nullTip/nullTip.wxml"/>
+<view class="tab-header">
+    <view class="tab-header-item {{show == 'film_favorite' ? 'tab-header-active' : ''}}" data-type="film_favorite" bindtap="changeViewType">电影</view>
+    <view class="tab-header-item {{show == 'person_favorite' ? 'tab-header-active' : ''}}" data-type="person_favorite" bindtap="changeViewType">人物</view>
+</view>
+<view class="tab-content">
+    <view class="tab-content-item" hidden="{{show == 'film_favorite' ? false : true}}">
+        <block wx:if="{{film_favorite.length == 0}}">
+            <template is="nullTip" data="{{nullTip: nullTip}}"/>
+        </block>
+        <block wx:else>
+            <block wx:for="{{film_favorite}}" wx:for-item="filmFavoriteItem" wx:for-index="filmFavoriteIndex" wx:key="filmFavorite">
+                <view class="favorite-film-item" data-id="{{filmFavoriteItem.id}}" bindtap="viewFilmDetail">
+                    <image class="favorite-film-cover" src="{{filmFavoriteItem.images.large}}"></image>
+                    <view class="favorite-film-info">
+                        <view class="favorite-film-txt favorite-film-title">{{filmFavoriteItem.title}}</view>
+                        <view class="favorite-film-txt">导演：{{filmFavoriteItem.directors[0].name}}</view>
+                        <view class="favorite-film-txt">演员：
+                            <block wx:for="{{filmFavoriteItem.casts}}" wx:for-item="filmDetailCastItem" wx:for-index="filmDetailCastIndex" wx:key="filmDetailCastItem">
+                                {{filmDetailCastItem.name}}
+                                <block wx:if="{{filmDetailCastIndex !== filmFavoriteItem.casts.length - 1}}">/</block>
+                            </block>
+                        </view>
+                        <view class="favorite-film-txt">豆瓣评分：
+                            <block wx:if="{{filmFavoriteItem.rating.average == 0}}">
+                                暂无评分
+                            </block>
+                            <block wx:else>
+                                {{filmFavoriteItem.rating.average}}分
+                            </block>
+                        </view>
+                        <view class="favorite-film-txt">上映年份：{{filmFavoriteItem.year}}年</view>
+                    </view>
+                </view>
+            </block>
+        </block>
+    </view>
+    <view class="tab-content-item" hidden="{{show == 'person_favorite' ? false : true}}">
+        <block wx:if="{{person_favorite.length == 0}}">
+            <template is="nullTip" data="{{nullTip: nullTip}}"/>
+        </block>
+        <block wx:else>
+            <block wx:for="{{person_favorite}}" wx:for-item="personFavoriteItem" wx:for-index="personFavoriteIndex" wx:key="personFavorite">
+                <view class="favorite-person-item" data-id="{{personFavoriteItem.id}}" bindtap="viewPersonDetail">
+                    <view class="favorite-person-intro">
+                        <view class="favorite-person-cover" style="background-image: url({{personFavoriteItem.avatars.medium}})"></view>
+                        <view class="favorite-person-info">
+                            <view class="favorite-person-txt favorite-person-name">{{personFavoriteItem.name}}</view>
+                            <view class="favorite-person-txt">{{personFavoriteItem.name_en}}</view>
+                            <view class="favorite-person-txt">{{personFavoriteItem.born_place}}</view>
+                            <view class="favorite-person-txt favorite-person-works">主要作品：
+                                <block wx:for="{{personFavoriteItem.works}}" wx:for-item="personFavoriteWorkItem" wx:for-index="personFavoriteWorkIndex" wx:key="personFavoriteWorks">
+                                    {{personFavoriteWorkItem.subject.title}}
+                                    <block wx:if="{{personFavoriteWorkIndex !== personFavoriteItem.works.length - 1}}">
+                                        、
+                                    </block>
+                                </block>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </block>
+    </view>
+</view>

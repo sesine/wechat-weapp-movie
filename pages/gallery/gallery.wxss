@@ -1,0 +1,15 @@
+@import '../../component/nullTip/nullTip.wxss';
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 60rpx;
+}
+
+.gallery-item {
+    width: 250rpx;
+    height: 250rpx;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -6,7 +6,19 @@
     "pages/search/search",
     "pages/filmDetail/filmDetail",
     "pages/personDetail/personDetail",
-    "pages/searchResult/searchResult"
+    "pages/searchResult/searchResult",
+    "pages/my/my",
+    "pages/favorite/favorite",
+    "pages/history/history",
+    "pages/shake/shake",
+    "pages/gallery/gallery",
+    "pages/setting/setting",
+    "pages/skin/skin",
+    "pages/personInfo/personInfo",
+    "pages/editPersonInfo/editPersonInfo",
+    "pages/systemInfo/systemInfo",
+    "pages/about/about",
+    "pages/location/location"
   ],
   "window": {
     "navigationBarBackgroundColor": "#47a86c",
@@ -31,17 +43,18 @@
       "iconPath": "dist/images/coming_icon.png",
       "selectedIconPath": "dist/images/coming_active_icon.png",
       "text": "待映"
-    },{
-      "pagePath": "pages/search/search",
-      "iconPath": "dist/images/search_icon.png",
-      "selectedIconPath": "dist/images/search_active_icon.png",
-      "text": "搜索"
     },
     {
       "pagePath": "pages/top/top",
       "iconPath": "dist/images/top_icon.png",
       "selectedIconPath": "dist/images/top_active_icon.png",
       "text": "口碑"
+    },
+    {
+      "pagePath": "pages/my/my",
+      "iconPath": "dist/images/my_icon.png",
+      "selectedIconPath": "dist/images/my_active_icon.png",
+      "text": "我的"
     }]
   },
   "networkTimeout": {

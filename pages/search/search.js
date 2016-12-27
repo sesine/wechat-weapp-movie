@@ -1,22 +1,23 @@
 var message = require('../../component/message/message')
 var douban  = require('../../comm/script/fetch')
-var url = ['https://api.douban.com/v2/movie/search?q=', 'https://api.douban.com/v2/movie/search?tag=']
-
+var config  = require('../../comm/script/config')
 Page({
   data:{
-    searchType: 0,
-    hotKeyword: ['功夫熊猫', '烈日灼心', '摆渡人', '长城', '我不是潘金莲', '这个杀手不太冷', '驴得水', '海贼王之黄金城', '西游伏妖片', '我在故宫修文物', '你的名字'],
-    hotTag: ['动作', '喜剧', '爱情', '悬疑']
+    searchType: 'keyword',
+    hotKeyword: config.hotKeyword,
+    hotTag: config.hotTag
   },
   changeSearchType: function() {
     var types = ['默认', '类型'];
+    var searchType = ['keyword', 'tag']
     var that = this
     wx.showActionSheet({
       itemList: types,
       success: function(res) {
+        console.log(res)
         if (!res.cancel) {
           that.setData({
-            searchType: res.tapIndex
+            searchType: searchType[res.tapIndex]
           })
         }
       }
@@ -28,28 +29,29 @@ Page({
     if (keyword == '') {
       message.show.call(that,{
         content: '请输入内容',
-        icon: 'info',
+        icon: 'null',
         duration: 1500
       })
       return false
     } else {
-      wx.navigateTo({
-        url: '../searchResult/searchResult?url=' + encodeURIComponent(url[that.data.searchType]) + '&keyword=' + keyword
+      var searchUrl = that.data.searchType == 'keyword' ? config.apiList.search.byKeyword : config.apiList.search.byTag
+      wx.redirectTo({
+        url: '../searchResult/searchResult?url=' + encodeURIComponent(searchUrl) + '&keyword=' + keyword
       })
     }
   },
   searchByKeyword: function(e) {
     var that = this
     var keyword = e.currentTarget.dataset.keyword
-    wx.navigateTo({
-      url: '../searchResult/searchResult?url=' + encodeURIComponent(url[0]) + '&keyword=' + keyword
+    wx.redirectTo({
+      url: '../searchResult/searchResult?url=' + encodeURIComponent(config.apiList.search.byKeyword) + '&keyword=' + keyword
     })
   },
   searchByTag: function(e) {
     var that = this
     var keyword = e.currentTarget.dataset.keyword
-    wx.navigateTo({
-      url: '../searchResult/searchResult?url=' + encodeURIComponent(url[1]) + '&keyword=' + keyword
+    wx.redirectTo({
+      url: '../searchResult/searchResult?url=' + encodeURIComponent(config.apiList.search.byTag) + '&keyword=' + keyword
     })
   }
 })

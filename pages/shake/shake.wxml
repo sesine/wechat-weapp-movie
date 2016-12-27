@@ -1,0 +1,41 @@
+<view class="debug" bindtap="play" hidden="{{!debug}}">
+    <view>摇一摇调试数据</view>
+    <view>x: {{x}}</view>
+    <view>y: {{y}}</view>
+    <view>z: {{z}}</view>
+    <view>showFilm: {{showFilm}}</view>
+    <view>loaded: {{loaded}}</view>
+    <view>change test: {{test}}</view>
+</view>
+<block wx:if="{{showFilm}}">
+    <view class="film" data-id="{{film.id}}" bindtap="viewFilmDetail">
+        <image src="{{film.images.large}}" class="film-cover"></image>
+        <view class="film-intro">
+            <view class="film-title">{{film.title}}</view>
+            <view class="film-directors">导演：{{film.directors[0].name}}</view>
+            <view class="film-person">演员：
+                <block wx:for="{{film.casts}}" wx:for-item="filmCastItem" wx:for-index="filmCastIndex" wx:key="filmCastItem">
+                    {{filmCastItem.name}}
+                    <block wx:if="{{filmCastIndex !== film.casts.length - 1}}">/</block>
+                </block>
+            </view>
+            <view class="fd-intro-txt">豆瓣评分：
+                <block wx:if="{{film.rating.average == 0}}">
+                    暂无评分
+                </block>
+                <block wx:else>
+                    {{film.rating.average}}分
+                </block>
+            </view>
+            <view class="fd-intro-txt">上映年份：{{film.year}}年</view>
+        </view>
+    </view>
+</block>
+<block wx:else>
+    <view class="welcome" style="background-image: url({{shakeWelcomeImg}})"></view>
+</block>
+<import src="../../component/message/message.wxml"/>
+<template is="message" data="{{message: message}}"/>
+<!-- 摇一摇音效 -->
+<audio src="{{shakeSoundUrl}}" id="shakeSound"></audio>
+<audio src="{{shakeCompleteSoundUrl}}" id="shakeCompleteSound"></audio>

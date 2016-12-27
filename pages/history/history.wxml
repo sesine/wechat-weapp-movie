@@ -1,0 +1,76 @@
+<import src="../../component/nullTip/nullTip.wxml"/>
+<view class="tab">
+<view class="tab-header">
+    <view class="tab-header-item {{show == 'film_history' ? 'tab-header-active' : ''}}" data-type="film_history" bindtap="changeViewType">电影</view>
+    <view class="tab-header-item {{show == 'person_history' ? 'tab-header-active' : ''}}" data-type="person_history" bindtap="changeViewType">人物</view>
+</view>
+<view class="tab-content">
+    <view class="tab-content-item" hidden="{{show == 'film_history' ? false : true}}">
+        <block wx:if="{{film_history.length == 0}}">
+            <template is="nullTip" data="{{nullTip: nullTip}}"/>
+        </block>
+        <block wx:else>
+            <block wx:for="{{film_history}}" wx:for-item="filmHistoryItem" wx:for-index="filmHistoryIndex" wx:key="filmHistory">
+                <block wx:for="{{filmHistoryItem.films}}" wx:for-item="filmHistoryFilmItem" wx:for-index="filmHistoryFilmIndex" wx:key="filmHistoryFilm">
+                    <view class="history-film-item" data-id="{{filmHistoryFilmItem.data.id}}" bindtap="viewFilmDetail">
+                        <view class="history-film-time">{{filmHistoryFilmItem.time}}</view>
+                        <view class="history-film-intro">
+                            <image class="history-film-cover" src="{{filmHistoryFilmItem.data.images.large}}"></image>
+                            <view class="history-film-info">
+                                <view class="history-film-txt history-film-title">{{filmHistoryFilmItem.data.title}}</view>
+                                <view class="history-film-txt">导演：{{filmHistoryFilmItem.data.directors[0].name}}</view>
+                                <view class="history-film-txt">演员：
+                                    <block wx:for="{{filmHistoryFilmItem.data.casts}}" wx:for-item="filmDetailCastItem" wx:for-index="filmDetailCastIndex" wx:key="filmDetailCastItem">
+                                        {{filmDetailCastItem.name}}
+                                        <block wx:if="{{filmDetailCastIndex !== filmHistoryFilmItem.data.casts.length - 1}}">/</block>
+                                    </block>
+                                </view>
+                                <view class="history-film-txt">豆瓣评分：
+                                    <block wx:if="{{filmHistoryFilmItem.data.rating.average == 0}}">
+                                        暂无评分
+                                    </block>
+                                    <block wx:else>
+                                        {{filmHistoryFilmItem.data.rating.average}}分
+                                    </block>
+                                </view>
+                                <view class="history-film-txt">上映年份：{{filmHistoryFilmItem.data.year}}年</view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </block>
+        </block>
+    </view>
+    <view class="tab-content-item" hidden="{{show == 'person_history' ? false : true}}">
+        <block wx:if="{{person_history.length == 0}}">
+            <template is="nullTip" data="{{nullTip: nullTip}}"/>
+        </block>
+        <block wx:else>
+            <block wx:for="{{person_history}}" wx:for-item="personHistoryItem" wx:for-index="personHistoryIndex" wx:key="personHistory">
+                <view class="history-person-date">{{personHistoryItem.date}}</view>
+                <block wx:for="{{personHistoryItem.persons}}" wx:for-item="personHistoryItem" wx:for-index="personHistoryIndex" wx:key="personHistory">
+                    <view class="history-person-time">{{personHistoryItem.time}}</view>
+                    <view class="history-person-item" data-id="{{personHistoryItem.data.id}}" bindtap="viewPersonDetail">
+                        <view class="history-person-intro">
+                            <view class="history-person-cover" style="background-image: url({{personHistoryItem.data.avatars.medium}})"></view>
+                            <view class="history-person-info">
+                                <view class="history-person-txt history-person-name">{{personHistoryItem.data.name}}</view>
+                                <view class="history-person-txt">{{personHistoryItem.data.name_en}}</view>
+                                <view class="history-person-txt">{{personHistoryItem.data.born_place}}</view>
+                                <view class="history-person-txt history-person-works">主要作品：
+                                    <block wx:for="{{personHistoryItem.data.works}}" wx:for-item="personHistoryWorkItem" wx:for-index="personHistoryWorkIndex" wx:key="personHistoryWorks">
+                                        {{personHistoryWorkItem.subject.title}}
+                                        <block wx:if="{{personHistoryWorkIndex !== personHistoryItem.data.works.length - 1}}">
+                                            、
+                                        </block>
+                                    </block>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </block>
+        </block>
+    </view>
+</view>
+</view>

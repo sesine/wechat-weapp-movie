@@ -1,0 +1,103 @@
+@import '../../comm/style/tab.wxss';
+@import '../../component/nullTip/nullTip.wxss';
+.history-film-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.history-film-date, .history-person-date {
+    box-sizing: border-box;
+    width: 300rpx;
+    padding: 10rpx 20rpx;
+    margin: 0 auto 30rpx auto;
+    font-size: 36rpx;
+    text-align: center;
+    color: #999;
+    border-radius: 60rpx;
+    background-color: #f4f4f4;
+}
+
+.history-film-time {
+    margin-bottom: 10rpx;
+    color: #e5e5e5;
+    font-size: 60rpx;
+}
+
+.history-film-item {
+    margin-bottom: 60rpx;
+}
+
+.history-film-intro {
+    display: flex;
+}
+
+.history-film-cover {
+    width: 300rpx;
+    height: 420rpx;
+    box-shadow: 10rpx 10rpx 30rpx rgba(0, 0, 0, .2)
+}
+
+.history-film-info {
+    max-width: 350rpx;
+    margin-left: 40rpx;
+}
+
+.history-film-txt {
+    background-color: #fafafa;
+    padding: 5rpx 10rpx;
+    margin-bottom: 10rpx;
+    color: #666;
+    display: inline-block;
+}
+
+.history-film-title {
+    font-size: 40rpx;
+    color: #444;
+}
+
+.history-person-item {
+    box-sizing: border-box;
+    padding: 40rpx;
+    margin-bottom: 60rpx;
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 20rpx;
+    box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, .1);
+}
+
+.history-person-intro {
+    display: flex;
+    justify-content: space-between;
+}
+
+.history-person-info {
+    width: 320rpx;
+}
+
+.history-person-time {
+    margin-bottom: 20rpx;
+    font-size: 36rpx;
+    text-align: center;
+    color: #ccc;
+}
+
+.history-person-cover {
+    width: 260rpx;
+    height: 260rpx;
+    margin-bottom: 30rpx;
+    border-radius: 260rpx;
+    box-shadow: 0 20rpx 60rpx rgba(0, 0, 0, .1);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.history-person-txt {
+    margin-bottom: 10rpx;
+    color: #999;
+}
+
+.history-person-name {
+    font-size: 40rpx;
+    color: #666;
+}

@@ -1,0 +1,3 @@
+<import src="../../component/list/list.wxml"/>
+<template is="list" data="{{cells: cells}}"/>
+<navigator url="../editPersonInfo/editPersonInfo" class="edit-btn">编 辑</navigator>

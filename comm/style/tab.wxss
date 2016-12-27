@@ -1,0 +1,39 @@
+page{
+    background-color: #fcfcfc;
+}
+
+.tab-header {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: table;
+    width: 750rpx;
+    height: 80rpx;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.tab-header-item {
+    display: table-cell;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+}
+
+.tab-header-item:active {
+    background-color: #f8f8f8;
+}
+
+.tab-header-active {
+    border-bottom: 4rpx solid #47a86c;
+}
+
+.tab-content {
+    margin-top: 80rpx;
+}
+
+.tab-content-item {
+    box-sizing: border-box;
+    padding: 30rpx;
+}

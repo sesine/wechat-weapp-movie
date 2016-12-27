@@ -1,0 +1,57 @@
+@import "../../component/message/message.wxss";
+.debug {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 40rpx;
+    background-color: rgba(0, 0, 0, .6);
+    color: #0aff67;
+}
+
+#shakeSound, #shakeCompleteSound {
+    display: none;
+}
+
+.welcome {
+    width: 750rpx;
+    height: 1254rpx;
+    background-color: #338954;
+    background-size: contain;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+}
+
+.film {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 750rpx;
+    height: 1254rpx;
+    padding: 40rpx 100rpx;
+    background-color: #eee;
+    color: #fff;
+    font-size: 32rpx;
+}
+
+.film-cover {
+    width: 500rpx;
+    height: 700rpx;
+    box-shadow: 0 60rpx 120rpx rgba(0, 0, 0, .4);
+}
+
+.film-intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 300rpx;
+    color: #666;
+}
+
+.film-title {
+    margin-bottom: 30rpx;
+    font-size: 50rpx;
+    text-align: center;
+    color: #333;
+}

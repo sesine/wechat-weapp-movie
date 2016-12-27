@@ -12,6 +12,7 @@
                 <view class="pd-name-en">{{personDetail.name_en}}</view>
                 <view class="pd-address">{{personDetail.born_place}}</view>
             </view>
+            <view class="pd-favorite {{isPersonFavorite ? 'pd-favorite-active' : ''}}" bindtap="favoritePerson">收藏</view>
         </view>
         <view class="pd-bd">
             <view class="pd-work">

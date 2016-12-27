@@ -1,0 +1,60 @@
+.skin-list {
+    overflow: hidden;
+}
+.skin-item, .skin-img {
+    width: 710rpx;
+    height: 360rpx;
+}
+
+.skin-item {
+    box-sizing: border-box;
+    position: relative;
+    margin: 20rpx auto;
+    border-radius: 20rpx;
+    box-shadow: 0 20rpx 20rpx rgba(0, 0, 0, .2);
+    overflow: hidden;
+}
+
+.skin-item-active {
+    border: 6rpx solid #47a86c;
+}
+
+.skin-item-active::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -80rpx;
+    right: -80rpx;
+    z-index: 4;
+    width: 160rpx;
+    height: 160rpx;
+    transform: rotate(45deg);
+    background-color: #47a86c;
+}
+
+.skin-item-active::after {
+    content: '在用';
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 3px;
+    z-index: 4;
+    text-align: center;
+    transform: rotate(45deg);
+    color: #fff;
+}
+
+.skin-title {
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80rpx;
+    font-size: 32rpx;
+    line-height: 80rpx;
+    padding: 0 40rpx;
+    background-color: rgba(0, 0, 0, .6);
+    border-radius: 0 0 20rpx 20rpx;
+    color: #fff;
+}

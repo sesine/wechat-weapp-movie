@@ -1,36 +1,24 @@
 var douban = require('../../comm/script/fetch')
 var config = require('../../comm/script/config')
-var url = 'https://api.douban.com/v2/movie/in_theaters'
-var searchByTagUrl = 'https://api.douban.com/v2/movie/search?tag='
+var app = getApp()
 Page({
 	data: {
 		films: [],
 		hasMore: true,
 		showLoading: true,
 		start: 0,
-		windowHeight: 0
+		bannerList: config.bannerList
 	},
 	onLoad: function() {
-		console.log('load')
 		var that = this
-		douban.fetchFilms.call(that, url, config.city, that.data.start, config.count)
-	},
-	onShow: function() {
-		var that = this
-		wx.getSystemInfo({
-		  success: function(res) {
-			  that.setData({
-				  windowHeight: res.windowHeight*2
-			  })
-		  }
+		wx.showNavigationBarLoading()
+		app.getCity(function(){
+			wx.hideNavigationBarLoading()
+			wx.setNavigationBarTitle({
+				title: '正在热映 - ' + config.city
+			})
+			douban.fetchFilms.call(that, config.apiList.popular, that.data.start, config.count)
 		})
-	},
-	scroll: function(e) {
-		console.log(e)
-	},
-	scrolltolower: function() {
-		var that = this
-		douban.fetchFilms.call(that, url, config.city, that.data.start, config.count)
 	},
 	onPullDownRefresh: function() {
 		var that = this
@@ -40,7 +28,13 @@ Page({
 			showLoading: true,
 			start: 0
 		})
-		douban.fetchFilms.call(that, url, config.city, that.data.start, config.count)
+		this.onLoad()
+	},
+	onReachBottom: function() {
+		var that = this
+		if (!that.data.showLoading) {
+			douban.fetchFilms.call(that, config.apiList.popular, that.data.start, config.count)
+		}
 	},
 	viewFilmDetail: function(e) {
 		var data = e.currentTarget.dataset;
@@ -52,7 +46,30 @@ Page({
 		var data = e.currentTarget.dataset
 		var keyword = data.tag
 		wx.navigateTo({
-			url: '../searchResult/searchResult?url=' + encodeURIComponent(searchByTagUrl) + '&keyword=' + keyword
+			url: '../searchResult/searchResult?url=' + encodeURIComponent(config.apiList.search.byTag) + '&keyword=' + keyword
+		})
+	},
+	viewBannerDetail: function(e) {
+		var data = e.currentTarget.dataset
+		if (data.type == 'film') {
+			wx.navigateTo({
+				url: "../filmDetail/filmDetail?id=" + data.id
+			})
+		} else if (data.type == 'person') {
+			wx.navigateTo({
+				url: '../personDetail/personDetail?id=' + data.id
+			})
+		} else if (data.type == 'search') {
+			// stype(searchType) 0:关键词, 1:类型标签
+			var searchUrl = stype == 'keyword' ? config.search.byKeyword : config.search.byTag
+			wx.navigateTo({
+				url: '../searchResult/searchResult?url=' + encodeURIComponent(searchUrl) + '&keyword=' + keyword
+			})
+		}
+	},
+	viewSearch: function() {
+		wx.navigateTo({
+			url: '../search/search'
 		})
 	}
 })

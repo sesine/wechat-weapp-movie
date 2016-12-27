@@ -1,2 +1,2 @@
 @import "../../component/filmList/filmList.wxss";
-@import "../../component/message/message.wxss";
+@import "../../component/nullTip/nullTip.wxss";

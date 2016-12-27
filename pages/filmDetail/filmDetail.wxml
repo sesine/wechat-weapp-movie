@@ -26,7 +26,7 @@
                 </view>
                 <view class="fd-intro-txt">上映年份：{{filmDetail.year}}年</view>
             </view>
-            
+            <view class="fd-favorite {{isFilmFavorite ? 'fd-favorite-active' : ''}}" bindtap="favoriteFilm">收藏</view>
         </view>
         <view class="fd-data">
             <view class="fd-data-item">
