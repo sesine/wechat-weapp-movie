@@ -20,5 +20,5 @@
                 <view class="grid-title">{{gridItem.zhName}}</view>
             </view>
         </block>
-    <view>
+    </view>
 </view>
