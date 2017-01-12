@@ -5,7 +5,9 @@
 <block wx:else>
     <view class="gallery">
         <block wx:for="{{pictures}}" wx:for-item="picturesItem" wx:for-index="picturesIndex" wx:key="pictures">
-            <image class="gallery-item" src="{{picturesItem}}" data-index="{{picturesIndex}}" bindtap="previewImage"></image>
+            <view class="gallery-item">
+                <image class="gallery-item-cover" src="{{picturesItem}}" mode="aspectFill" data-index="{{picturesIndex}}" bindtap="previewImage"></image>
+            </view>
         </block>
     </view>
     <view bindtap="uploadImg" class="null-action">上传</view>
