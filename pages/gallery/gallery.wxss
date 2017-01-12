@@ -3,13 +3,46 @@
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 60rpx;
+    position: relative;
+}
+
+.gallery::before, .gallery::after, .gallery-item::before, .gallery-item::after {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: #e5e5e5;
+}
+
+.gallery::before, .gallery::after {
+    top: 0;
+    left: 0;
+}
+
+.gallery-item::before, .gallery-item::after {
+    bottom: 0;
+    right: 0;
+}
+
+.gallery::before, .gallery-item::before {
+    width: 100%;
+    height: 1px;
+    transform: scaleY(0.5);
+}
+
+.gallery::after, .gallery-item::after {
+    width: 1px;
+    height: 100%;
+    transform: scaleX(0.5);
 }
 
 .gallery-item {
     width: 250rpx;
     height: 250rpx;
     overflow: hidden;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    position: relative;
+}
+
+.gallery-item-cover {
+    width: 100%;
+    height: 100%;
 }
