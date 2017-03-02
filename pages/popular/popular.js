@@ -17,7 +17,7 @@ Page({
 			wx.setNavigationBarTitle({
 				title: '正在热映 - ' + config.city
 			})
-			douban.fetchFilms.call(that, config.apiList.popular, that.data.start, config.count)
+			douban.fetchFilms.call(that, config.apiList.popular, that.data.start)
 		})
 	},
 	onPullDownRefresh: function() {
@@ -33,7 +33,7 @@ Page({
 	onReachBottom: function() {
 		var that = this
 		if (!that.data.showLoading) {
-			douban.fetchFilms.call(that, config.apiList.popular, that.data.start, config.count)
+			douban.fetchFilms.call(that, config.apiList.popular, that.data.start)
 		}
 	},
 	viewFilmDetail: function(e) {

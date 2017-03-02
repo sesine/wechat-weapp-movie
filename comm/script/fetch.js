@@ -11,7 +11,7 @@ function fetchFilms(url, start, count, cb, fail_cb) {
       data: {
         city: config.city,
         start: start,
-        count: count
+        count: config.count
       },
       method: 'GET', 
       header: {
@@ -28,6 +28,7 @@ function fetchFilms(url, start, count, cb, fail_cb) {
             start: that.data.start + res.data.subjects.length,
             showLoading: false
           })
+          console.log(that.data.start);
         }
         wx.stopPullDownRefresh()
         typeof cb == 'function' && cb(res.data)

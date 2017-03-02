@@ -9,7 +9,7 @@ Page({
 	},
 	onLoad: function() {
 		var that = this
-		douban.fetchFilms.call(that, config.apiList.top, config.city, that.data.start, config.count)
+		douban.fetchFilms.call(that, config.apiList.top, that.data.start)
 	},
 	onPullDownRefresh: function() {
 		var that = this
@@ -19,12 +19,12 @@ Page({
 			showLoading: true,
 			start: 0
 		})
-		douban.fetchFilms.call(that, config.apiList.top, config.city, that.data.start, config.count)
+		douban.fetchFilms.call(that, config.apiList.top, that.data.start)
 	},
 	onReachBottom: function() {
 		var that = this
 		if (!that.data.showLoading) {
-			douban.fetchFilms.call(that, config.apiList.top, config.city, that.data.start, config.count)
+			douban.fetchFilms.call(that, config.apiList.top, that.data.start)
 		}
 	},
 	viewFilmDetail: function(e) {
