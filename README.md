@@ -4,7 +4,7 @@
 
 话不多说，先上图
 
-![UI](http://139.196.214.241:8093/cdn/screenshot/movie v2.0.jpg)
+![UI](http://139.196.214.241:8093/cdn/screenshot/movie%20v2.0.jpg)
 
 ## 感谢与支持
 - 豆瓣api https://developers.douban.com/
