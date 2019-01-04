@@ -2,9 +2,7 @@
 
 > 微信小程序 - 电影推荐 v2.0
 
-话不多说，先上图
-
-![UI](http://139.196.214.241:8093/cdn/screenshot/movie%20v2.0.jpg)
+查看所有页面UI请点击：[https://sesine.com/mina](https://sesine.com/mina/)
 
 ## 感谢与支持
 - 豆瓣api https://developers.douban.com/
@@ -72,7 +70,3 @@
 - 2016-12-24
     + 1.相册的背景图片方式改成image标签的方式
     + 2.添加摇一摇debug测试开关变量
-
-## 开发总结
-
-> 正在编写中，之后会给出链接
