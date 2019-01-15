@@ -5,7 +5,11 @@
 查看所有页面UI请点击：[https://sesine.com/mina](https://sesine.com/mina/)
 
 ## 感谢与支持
-- 豆瓣api https://developers.douban.com/
+- 豆瓣api https://sesine.com/ (代理豆瓣api)
+
+> 由于微信服务器请求豆瓣api次数过多，已经禁止微信小程序请求。请使用新的api地址请求，请将原来的api请求地址从 https://api.douban.com/v2/ 改为 https://sesine.com/mina/api/ 即可，api请求的参数不变。
+
+
 - 百度地图 http://lbsyun.baidu.com/
 
 ## 新版本内容
