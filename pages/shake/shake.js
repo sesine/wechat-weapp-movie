@@ -4,7 +4,7 @@ var douban = require('../../comm/script/fetch')
 
 // 重力感应参数
 var SHAKE_THRESHOLD = 200
-var lastUpdate = 0
+var lastUpdate
 var x, y, z, lastX, lastY, lastZ
 Page({
   data:{
@@ -22,23 +22,26 @@ Page({
     debug: false //显示debug数据
   },
   onLoad:function(options){
+    // 初始化数据
+    x = 0, y = 0, z = 0, lastX = 0, lastY = 0, lastZ = 0, lastUpdate = 0;
     var that = this
     wx.getStorage({
       key: 'shakeFilmList',
       success: function(res){
         if (res.data.length == 0) {
-          // 如果缓存内无数据，则请求数据
-          that.getData()
-        } else {
           // 如果缓存内有数据，则获取数据
           that.setData({
             films: res.data,
             loaded: true
           })
         }
-        that.shake() //开启监听重力感应
+      },
+      fail: function() {
+        // 如果缓存内无数据，则请求数据
+        that.getData()
       }
     })
+    that.shake() //开启监听重力感应
   },
   shake: function() {
     var that = this
