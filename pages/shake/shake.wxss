@@ -7,7 +7,9 @@
     background-color: rgba(0, 0, 0, .6);
     color: #0aff67;
 }
-
+page {
+  background-color: #338954;
+}
 #shakeSound, #shakeCompleteSound {
     display: none;
 }
@@ -22,13 +24,16 @@
 }
 
 .film {
+    position: fixed;
+    left: 0;
+    top: 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 750rpx;
-    height: 1254rpx;
+    width: 100%;
+    height: 100%;
     padding: 40rpx 100rpx;
     background-color: #eee;
     color: #fff;
