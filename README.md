@@ -1,4 +1,4 @@
-<p align="center"><a href="https://sesine.com/mina" target="_blank"><img src="http://static.sesine.com/wechat-weapp-movie/logo.png" width="128" hegiht="128" alt="logo"></a></p>
+<p align="center"><a href="https://sesine.com/mina" target="_blank"><img src="./resource//logo.png" width="128" hegiht="128" alt="logo"></a></p>
 
 # 🎬 电影推荐小程序 v2.0
 
