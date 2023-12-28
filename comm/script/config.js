@@ -14,7 +14,7 @@ shakeWelcomeImg: 摇一摇欢迎图片
 // 静态资源地址
 var staticUrl = 'https://static.sesine.com/wechat-weapp-movie'
 // api地址
-var apiUrl = 'https://sesine.com/mina/api'
+var apiUrl = 'https://douban.uieee.com/v2'
 module.exports = {
     city: '',
     count: 20,
